@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +9,26 @@
     <link rel="stylesheet" href="Style/style.css">
 </head>
 <body>
-    
+   <header class="header">
+  <div class="burger">
+    <div class="burger__patty"></div>
+    <div class="burger__patty"></div>
+    <div class="burger__patty"></div>
+  </div>
+
+  <nav class="menu">
+    <div class="menu__brand">
+		<h1>GET IN TOUCH</h1>
+     	<input class="input-field" type="text" placeholder="YARAK" name="test">
+    </div>
+    <ul class="menu__list">
+      <li class="menu__item"><a href="" class="menu__link">RESUMÉ</a></li>
+      <li class="menu__item"><a href="" class="menu__link">PORTFOLIO</a></li>   
+    </ul>
+  </nav>
+</header>
+	
+	
     <div class="split left">
         <div class="centered">
             <h1>Welcome</h1>
@@ -16,10 +36,69 @@
     </div>
 
     <div class="split right">
+		
+	
+		
         <div class="centered">
-            <img src="SVG/developer_desk.svg">
+            <img src="SVG/developer_desk.svg" alt="Developer Desk">
         </div>
     </div>
     
+<script>
+    (function() {
+  
+  var Menu = (function() {
+    var burger = document.querySelector('.burger');
+    var menu = document.querySelector('.menu');
+    var menuList = document.querySelector('.menu__list');
+    var brand = document.querySelector('.menu__brand');
+    var menuItems = document.querySelectorAll('.menu__item');
+    
+    var active = false;
+    
+    var toggleMenu = function() {
+      if (!active) {
+        menu.classList.add('menu--active');
+        menuList.classList.add('menu__list--active');
+        brand.classList.add('menu__brand--active');
+        burger.classList.add('burger--close');
+        for (var i = 0, ii = menuItems.length; i < ii; i++) {
+          menuItems[i].classList.add('menu__item--active');
+        }
+        
+        active = true;
+      } else {
+        menu.classList.remove('menu--active');
+        menuList.classList.remove('menu__list--active');
+        brand.classList.remove('menu__brand--active');
+        burger.classList.remove('burger--close');
+        for (var i = 0, ii = menuItems.length; i < ii; i++) {
+          menuItems[i].classList.remove('menu__item--active');
+        }
+        
+        active = false;
+      }
+    };
+    
+    var bindActions = function() {
+      burger.addEventListener('click', toggleMenu, false);
+    };
+    
+    var init = function() {
+      bindActions();
+    };
+    
+    return {
+      init: init
+    };
+    
+  }());
+  
+  Menu.init();
+  
+}());
+    
+    
+</script>
 </body>
 </html>
